@@ -18,7 +18,7 @@ public class PdfUtil {
      * @return
      * @throws FileNotFoundException
      */
-    public InputStream getPdfByLocal(String filePath) throws FileNotFoundException {
+    public static InputStream getPdfByLocal(String filePath) throws FileNotFoundException {
         if(StringUtils.isBlank(filePath)){
             throw new IllegalArgumentException("filePath cannot be null or empty");
         }
@@ -29,7 +29,7 @@ public class PdfUtil {
      * 从网络中下载PDF
      * @return
      */
-    public InputStream getPdfByHttp(){
+    public static InputStream getPdfByHttp(){
         // TODO
         return null;
     }

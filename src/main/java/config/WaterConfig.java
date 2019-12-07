@@ -17,27 +17,37 @@ public class WaterConfig {
      */
     private String fontPath;
 
+    /**
+     * 加完水印后的路径
+     */
+    private String pdfWaterPicPath;
+
+    /**
+     * PDF源文件路径
+     */
+    private String pdfPath;
+
     public String getPicPath() {
         return picPath;
-    }
-
-    public void setPicPath(String picPath) {
-        this.picPath = picPath;
     }
 
     public String getFontPath() {
         return fontPath;
     }
 
-    public void setFontPath(String fontPath) {
-        this.fontPath = fontPath;
+    public String getPdfWaterPicPath() {
+        return pdfWaterPicPath;
+    }
+
+    public String getPdfPath() {
+        return pdfPath;
     }
 
     public WaterConfig(Builder builder) {
         this.picPath = builder.picPath;
-    }
-
-    public WaterConfig() {
+        this.fontPath = builder.fontPath;
+        this.pdfWaterPicPath = builder.pdfWaterPicPath;
+        this.pdfPath = builder.pdfPath;
     }
 
     public static class Builder {
@@ -50,6 +60,18 @@ public class WaterConfig {
          * 水印字体
          */
         private String fontPath;
+
+        /**
+         * 加完水印后的路径
+         */
+        private String pdfWaterPicPath;
+
+        /**
+         * PDF源文件路径
+         */
+        private String pdfPath;
+
+
 
         public WaterConfig create() {
             return new WaterConfig(this);
@@ -73,6 +95,24 @@ public class WaterConfig {
 
         public String getFontPath() {
             return fontPath;
+        }
+
+        public String getPdfWaterPicPath() {
+            return pdfWaterPicPath;
+        }
+
+        public Builder setPdfWaterPicPath(String pdfWaterPicPath) {
+            this.pdfWaterPicPath = pdfWaterPicPath;
+            return this;
+        }
+
+        public String getPdfPath() {
+            return pdfPath;
+        }
+
+        public Builder setPdfPath(String pdfPath) {
+            this.pdfPath = pdfPath;
+            return this;
         }
     }
 }

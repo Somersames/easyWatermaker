@@ -21,13 +21,13 @@ public class ImageUtil {
 
     /**
      *
-     * @param height
      * @param width
+     * @param height
      * @param fontHeight
      * @param content
      * @return
      */
-    public BufferedImage getImage(int height, int width, int fontHeight, String content,Font font) throws Exception {
+    public static BufferedImage getImage(int width, int height, int fontHeight, String content,Font font) throws Exception {
         try {
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D gd = img.createGraphics();
@@ -53,7 +53,7 @@ public class ImageUtil {
      * @param content
      * @return
      */
-    public BufferedImage getImageByDefaultFont(int height, int width, int fontHeight, String content) throws Exception {
+    public static BufferedImage getImageByDefaultFont(int height, int width, int fontHeight, String content) throws Exception {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Font[] fonts = ge.getAllFonts();
         if(Objects.isNull(fonts) || fonts.length == 0){
