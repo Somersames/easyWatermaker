@@ -36,10 +36,12 @@ public class GenerateUtil {
         int total = pdfReader.getNumberOfPages() + 1;
         String filePath = waterConfig.getPicPath() + content + ".png";
         File imgFile = new File(filePath);
-        try {
-            ImageIO.write(ImageUtil.getImage(width,height,fontHeight,content,font), "PNG", imgFile);
-        } catch (IOException e) {
-            log.error("file create error,e : ", e);
+        if(!imgFile.exists()){
+            try {
+                ImageIO.write(ImageUtil.getImage(width,height,fontHeight,content,font,waterConfig.getFontColor()), "PNG", imgFile);
+            } catch (IOException e) {
+                log.error("file create error,e : ", e);
+            }
         }
         Image image = Image.getInstance(filePath);
         PdfContentByte under;
@@ -50,10 +52,6 @@ public class GenerateUtil {
 
         PdfStamper stamper = new PdfStamper(pdfReader, new FileOutputStream(waterConfig.getPdfWaterPicPath()));
         for (int i = 1; i < total; i++) {
-            pageRect = stamper.getReader().getPageSizeWithRotation(i);
-            // 计算水印X,Y坐标
-            float x = pageRect.getWidth() / 10;
-            float y = pageRect.getHeight() / 10;
             under = stamper.getOverContent(i);
             under.saveState();
             under.setGState(gs);

@@ -27,7 +27,7 @@ public class ImageUtil {
      * @param content
      * @return
      */
-    public static BufferedImage getImage(int width, int height, int fontHeight, String content,Font font) throws Exception {
+    public static BufferedImage getImage(int width, int height, int fontHeight, String content,Font font,Color color) throws Exception {
         try {
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D gd = img.createGraphics();
@@ -36,7 +36,7 @@ public class ImageUtil {
             gd = img.createGraphics();
             //设置透明  end
             gd.setFont(font);
-            gd.setColor(Color.green); //设置颜色
+            gd.setColor(color); //设置颜色
             gd.drawString(content, width / 2 - fontHeight * content.length() / 2, fontHeight);
             return img;
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class ImageUtil {
         }
         Font font = fonts[0];
         font.deriveFont(Font.PLAIN,fontHeight);
-        return getImage(height,width,fontHeight,content,font);
+        return getImage(height,width,fontHeight,content,font,Color.GRAY);
     }
 
 }
